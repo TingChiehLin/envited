@@ -1,12 +1,6 @@
-import {useParams} from "react-router-dom";
-import Button from "../components/Button";
-
-import CoverBG from '../imgs/cover.png';
-import {FcCloseUpMode, FcCheckmark} from 'react-icons/fc';
+import {FcCloseUpMode} from 'react-icons/fc';
 
 const EventDetail = () => {
-
-    let {eventId} = useParams();
 
     return (
         <>
