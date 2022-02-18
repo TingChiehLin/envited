@@ -10,6 +10,7 @@ module.exports = {
       },
       backgroundImage: {
         'landing-background': "url('/src/imgs/bg_01.png')",
+        'cover': "url('/src/imgs/cover.png')",
       }
     },
   },

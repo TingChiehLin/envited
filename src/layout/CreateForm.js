@@ -34,7 +34,7 @@ const CreateForm = () => {
     }
 
     return (
-        <div className={"w-full max-w-lg mx-auto mt-20 drop-shadow-md"}>
+        <div className={"h-screen flex justify-center items-center drop-shadow-md"}>
             <form
                 onSubmit={formSubmissionHandler}
                 className={"px-16 py-20 bg-gray-100 rounded-md"}
