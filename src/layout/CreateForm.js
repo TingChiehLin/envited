@@ -6,29 +6,52 @@ const CreateForm = () => {
 
     let navigate = useNavigate();
 
-    const [eventName, setEventName] = useState("");
-    const [hostName, setHostName] = useState("");
-    const [enteredDate, setEnteredDate] = useState('');
+    // const [eventName, setEventName] = useState("");
+    // const [hostName, setHostName] = useState("");
+    // const [enteredDate, setEnteredDate] = useState('');
 
-    const eventInputHandler = (event) => {
-        setEventName(event.currentTarget.value);
-    }
+    // const eventInputHandler = (event) => {
+    //     setEventName(event.currentTarget.value);
+    // }
+    //
+    // const hostNameHandler = (event) => {
+    //     setHostName(event.currentTarget.value);
+    // }
+    //
+    // const dateHandler = (event) => {
+    //     setEnteredDate(event.currentTarget.value);
+    // }
 
-    const hostNameHandler = (event) => {
-        setHostName(event.currentTarget.value);
-    }
 
-    const dateHandler = (event) => {
-        setEnteredDate(event.currentTarget.value);
+    //Using the other way to setState
+    const [state, setState] = useState({
+        eventName: '',
+        hostName: '',
+        enteredDate: ''
+    });
+
+    //Using Currying for different input
+    const inputHandler = (inputValue) => (event) => { //eventName
+        setState({
+            ...state, // destructuring an object, copies all items into an object to a new object
+            // destructure will copy all this
+            // eventName: '',
+            // hostName: '',
+            // enteredDate: '',
+            // [eventName]: event.target.value
+            // state[eventName] = event.target.value
+            // state.eventName = event.target.value
+            [inputValue]: event.target.value, // key assignment, same as state[fieldName] = event.target.value
+        })
     }
 
     const formSubmissionHandler = (event) => {
         event.preventDefault()
         const eventData = {
             id: Math.random().toString(),
-            eventName,
-            hostName,
-            date: new Date(enteredDate)
+            eventName: state.eventName,
+            hostName: state.hostName,
+            date: new Date(state.enteredDate)
         }
         navigate(`/event/${eventData.id}`);
     }
@@ -47,7 +70,7 @@ const CreateForm = () => {
                     <div className={"w-2/3"}>
                         <input
                             className={"w-full py-1 appearance-none leading-tight border-2 focus:outline-none focus:bg-white focus:border-purple-500"}
-                            type={"text"} id={'name'} onChange={eventInputHandler}/>
+                            type={"text"} id={'name'} onChange={inputHandler('eventName')}/>
                     </div>
                 </div>
                 <div className={"form-control mb-6 flex"}>
@@ -59,7 +82,7 @@ const CreateForm = () => {
                             className={"w-full py-1 appearance-none leading-tight border-2 focus:outline-none focus:bg-white focus:border-purple-500"}
                             type={"host"}
                             id={'host'}
-                            onChange={hostNameHandler}
+                            onChange={inputHandler('hostName')}
                         />
                     </div>
                 </div>
@@ -74,7 +97,7 @@ const CreateForm = () => {
                             id={'date'}
                             min={"2022-01-01"}
                             max={"2022-12-31"}
-                            onChange={dateHandler}
+                            onChange={inputHandler('enteredDate')}
                         />
                     </div>
                 </div>
@@ -85,6 +108,5 @@ const CreateForm = () => {
         </div>
     )
 }
-
 
 export default CreateForm;

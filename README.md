@@ -1,6 +1,7 @@
 # Envited
 
-The project is for Facebook events without Facebook.
+The project is for React Form. Also, there are two ways to implement it.
+One is normal. The other one is more advanced use one object contains an object
 
 ## Technical Use
 
