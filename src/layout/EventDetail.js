@@ -13,20 +13,6 @@ const EventDetail = () => {
                         <div className={"text-purple-300 text-base"}>Hosted by Anica</div>
                     </div>
                 </div>
-                <div>
-                    <button className={"py-4 px-12"}>Invite a friend</button>
-                </div>
-                <div>
-                    Date
-                </div>
-                <div>
-                    locaation
-                </div>
-                <div>
-                    <button>Details</button>
-                    <button>Posts</button>
-                </div>
-
             </div>
         </>
     )
